@@ -1,0 +1,17 @@
+{
+    "name": "idrunk/dce-app",
+    "description": "A project initialized with DCE",
+    "keywords": ["dce", "swoole", "websocket", "sharding", "rcr"],
+    "homepage": "https://drunkce.com",
+    "type": "project",
+    "license": "MulanPSL-2.0",
+    "authors": [
+        {
+            "name": "Drunk",
+            "homepage": "http://idrunk.net"
+        }
+    ],
+    "require": {
+        "idrunk/dce": "v4.2.0-beta1"
+    }
+}
