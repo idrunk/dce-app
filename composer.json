@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-        "idrunk/dce": "v4.2.0-beta1"
+        "idrunk/dce": "@stable"
     }
 }
