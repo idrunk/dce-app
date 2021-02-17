@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Dce Cgi Web测试页面</title>
+    <title>Dce Web测试页面</title>
 </head>
 <body>
 <h1><?=$title?></h1>
