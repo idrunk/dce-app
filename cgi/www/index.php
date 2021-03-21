@@ -4,6 +4,6 @@
  * Date: 2021-02-16 16:39
  */
 
-define('APP_ROOT', __DIR__ . '/../');
+//define('APP_ROOT', __DIR__ . '/../');
 require_once '../../vendor/autoload.php';
 dce\Dce::boot();

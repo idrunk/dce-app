@@ -1,0 +1,6 @@
+#!/usr/bin/env php
+<?php
+// 指定项目目录, 并且没以 / 结尾, 表示仅作为一个项目, 而不是项目根目录
+define('APP_PROJECT_ROOT', __DIR__ . '/project');
+require_once __DIR__ . '/../vendor/autoload.php';
+dce\Dce::boot();

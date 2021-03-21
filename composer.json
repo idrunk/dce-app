@@ -12,6 +12,6 @@
         }
     ],
     "require": {
-        "idrunk/dce": "@stable"
+        "idrunk/dce": "^4.2-dev"
     }
 }
