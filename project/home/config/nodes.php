@@ -7,8 +7,8 @@
 return [
     [
         'path' => 'home',
-        'url_path_hidden' => true,
+        'omissible_path' => true,
         'controller' => 'CommonController->index',
-        'php_template' => 'common/index.php',
+        'render' => 'common/index.php',
     ]
 ];
