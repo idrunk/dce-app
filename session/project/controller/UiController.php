@@ -1,9 +1,9 @@
 <?php
 namespace project\controller;
 
-use dce\project\view\engine\ViewHttpHtml;
+use dce\project\Controller;
 
-class UiController extends ViewHttpHtml {
+class UiController extends Controller {
     public function index() {
         $hosts = [
             ['host' => '127.0.0.1', 'port' => 20460],

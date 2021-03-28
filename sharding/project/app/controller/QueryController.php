@@ -6,12 +6,12 @@
 
 namespace app\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\ViewCli;
 
-class QueryController extends ViewCli {
+class QueryController extends Controller {
     #[
-        Node('app', omissiblePath: true),
+        Node('app', 'cli', omissiblePath: true),
         // 需在协程中运行
         Node('query', enableCoroutine: true, controllerPath: true),
     ]

@@ -10,7 +10,7 @@ return [
         'omissible_path' => 1,
         'name' => 'IM界面',
         'controller' => 'ImUiController->ui',
-        'php_template' => 'im/ui.php',
+        'render' => 'im/ui.php',
         'template_layout' => '',
     ],
 

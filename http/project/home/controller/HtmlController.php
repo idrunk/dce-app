@@ -6,16 +6,16 @@
 
 namespace home\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\engine\ViewHttpHtml;
 
-class HtmlController extends ViewHttpHtml {
-    #[Node('home', phpTemplate: 'index.php', omissiblePath: true)]
+class HtmlController extends Controller {
+    #[Node('home', render: 'index.php', omissiblePath: true)]
     public function index() {
         $this->assign('title', '测试标题');
         $this->assign('content', '测试内容');
     }
 
-    #[Node('about', phpTemplate: 'about.php')]
+    #[Node('about', render: 'about.php')]
     public function about() {}
 }

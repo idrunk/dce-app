@@ -1,10 +1,10 @@
 <?php
 namespace home\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\engine\ViewHttpJson;
 
-class PathController extends ViewHttpJson {
+class PathController extends Controller {
     #[Node('ctrl', controllerPath: true)]
     public function __() {}
 

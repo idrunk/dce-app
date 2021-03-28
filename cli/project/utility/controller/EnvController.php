@@ -1,10 +1,10 @@
 <?php
 namespace utility\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\ViewCli;
 
-class EnvController extends ViewCli {
+class EnvController extends Controller {
     #[Node('env/get', lazyMatch: true)]
     public function get() {
         $info = [];

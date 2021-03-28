@@ -16,9 +16,8 @@
 │  │  ├─config                                项目配置目录
 │  │  │  ├─nodes.php                          项目节点配置
 │  │  ├─controller                            项目控制器目录
-│  │  │  ├─CommonController.php               接口控制器 (Html模板型视图器, 需渲染PHP Html模板)
-│  │  │  ├─JsonController.php                 界面控制器 (Json型视图器, 渲染为json数据)
-│  │  ├─view                                  项目视图目录
+│  │  │  ├─CommonController.php               接口控制器
+│  │  ├─template                              渲染模板目录
 │  │  │  ├─common
 │  │  │  │  ├─index.php                       待渲染模板视图文件
 ├─www                                         静态资源目录
@@ -33,3 +32,8 @@
 
 ### 访问Web页面
 根据你配置主机及端口到浏览器访问该服务
+
+HTTP接口
+- `GET /` 根据模板渲染出的页面
+- `GET /?/detail` JSON型接口页面
+- `POST /?/add` JSON型接口页面, 仅支持POST请求 (参见 nodes.php 的节点配置文件)

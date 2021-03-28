@@ -9,9 +9,8 @@ namespace app\controller;
 use app\model\TestModel;
 use dce\base\SwooleUtility;
 use dce\Dce;
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\request\Request;
-use dce\project\view\ViewCli;
 use dce\rpc\RpcClient;
 use dce\rpc\RpcHost;
 use dce\rpc\RpcServer;
@@ -20,11 +19,9 @@ use dce\storage\redis\RedisPool;
 use rpc\app\service\TestService;
 use Swoole\Coroutine;
 
-class HomeController extends ViewCli {
-    #[Node('app', omissiblePath: true)]
-    public function __construct(Request $request) {
-        parent::__construct($request);
-    }
+class HomeController extends Controller {
+    #[Node('app', 'cli', omissiblePath: true)]
+    public function __init(): void {}
 
     #[Node('rpc')]
     public function rpc() {

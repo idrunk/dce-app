@@ -10,10 +10,10 @@ use app\model\Member;
 use app\model\MemberBadge;
 use app\model\MemberBadgeMap;
 use app\model\MemberSignIn;
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\ViewCli;
 
-class ActiveController extends ViewCli {
+class ActiveController extends Controller {
     // 需在协程中运行
     #[Node('active', enableCoroutine: true, controllerPath: true)]
     public function __() {}

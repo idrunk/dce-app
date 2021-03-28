@@ -1,16 +1,14 @@
 <?php
 namespace project\controller;
 
-use dce\project\request\Request;
-use dce\service\server\ViewConnection;
+use dce\project\Controller;
 use project\service\ImEngine;
 
-class ImController extends ViewConnection {
+class ImController extends Controller {
     private ImEngine $imEngine;
 
-    public function __construct(Request $request) {
-        parent::__construct($request);
-        $this->imEngine = new ImEngine($request);
+    public function __init(): void {
+        $this->imEngine = new ImEngine($this->request);
     }
 
     public function signIn() {

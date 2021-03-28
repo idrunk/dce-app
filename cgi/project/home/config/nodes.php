@@ -9,15 +9,15 @@ return [
         'path' => 'home',
         'omissible_path' => true,
         'controller' => 'CommonController->index',
-        'php_template' => 'common/index.php',
+        'render' => 'common/index.php',
     ],
     [
         'path' => 'detail',
-        'controller' => 'JsonController->detail',
+        'controller' => 'CommonController->detail',
     ],
     [
         'path' => 'add',
         'methods' => 'post',
-        'controller' => 'JsonController->add',
+        'controller' => 'CommonController->add',
     ],
 ];

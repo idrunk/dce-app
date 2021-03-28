@@ -27,8 +27,8 @@
 │  │  ├─UiController.php                      界面控制器
 │  ├─service                                  项目服务类库目录
 │  │  ├─ImEngine.php                          即时通讯服务类
-│  ├─view                                     项目视图目录
-│  │  ├─index.php                             界面视图文件
+│  ├─template                                 渲染模板目录
+│  │  ├─index.php                             界面模板文件
 ├─runtime                                     运行时目录（可在入口文件中定义APP_RUNTIME常量自定义）
 │  ├─cache                                    File缓存目录
 │  ├─tpl                                      编译模板缓存目录

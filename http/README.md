@@ -20,7 +20,7 @@
 │  │  │  ├─JsonpController.php                Jsonp渲染控制器
 │  │  │  ├─PathController.php                 
 │  │  │  ├─XmlController.php                  Xml渲染控制器
-│  │  ├─view                                  项目视图目录
+│  │  ├─template                              渲染模板目录
 │  │  │  ├─about.php                          about页面模板
 │  │  │  ├─index.php                          index页面模板
 ├─dce                                         Shell/PHP脚本版Dce工具

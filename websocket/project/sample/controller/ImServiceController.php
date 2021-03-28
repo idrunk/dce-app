@@ -6,16 +6,14 @@
 
 namespace sample\controller;
 
-use dce\project\request\Request;
-use dce\service\server\ViewConnection;
+use dce\project\Controller;
 use sample\service\ImWebsocketService;
 
-class ImServiceController extends ViewConnection {
+class ImServiceController extends Controller {
     private ImWebsocketService $imService;
 
-    public function __construct(Request $request) {
-        parent::__construct($request);
-        $this->imService = new ImWebsocketService($this->rawRequest->getServer(), $request->fd);
+    public function __init(): void {
+        $this->imService = new ImWebsocketService($this->rawRequest->getServer(), $this->request->fd);
     }
 
     public function signIn() {

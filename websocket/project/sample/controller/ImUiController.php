@@ -6,10 +6,9 @@
 
 namespace sample\controller;
 
-use dce\Dce;
-use dce\project\view\engine\ViewHttpHtml;
+use dce\project\Controller;
 
-class ImUiController extends ViewHttpHtml {
+class ImUiController extends Controller {
     public function ui() {
         $host = '127.0.0.1';
         $port = 20461;

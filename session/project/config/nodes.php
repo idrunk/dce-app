@@ -4,7 +4,7 @@ return [
         'path' => 'project',
         'omissible_path' => true,
         'controller' => 'UiController->index',
-        'php_template' => 'index.php',
+        'render' => 'index.php',
     ],
 
     [

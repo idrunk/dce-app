@@ -6,11 +6,12 @@
 
 namespace home\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\view\engine\ViewHttpJsonp;
+use dce\project\render\Renderer;
 
-class JsonpController extends ViewHttpJsonp {
-    #[Node('detail2', urlSuffix: ['.js'], jsonpCallback: 'callback')]
+class JsonpController extends Controller {
+    #[Node('detail2', render: Renderer::TYPE_JSONP, urlSuffix: ['.js'], jsonpCallback: 'callback')]
     public function detail() {
         $this->assign('node1', 'value1');
         $this->assign('node2', ['a' => 1, 'b' => 2]);

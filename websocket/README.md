@@ -26,9 +26,9 @@
 │  │  ├─service                               项目服务类库目录
 │  │  │  ├─ImWebsocketServer.php              自定义服务器类
 │  │  │  ├─ImWebsocketService.php             即时通讯服务类
-│  │  ├─view                                  项目视图目录
+│  │  ├─template                              渲染模板录
 │  │  │  ├─im                                 即时通讯界面目录
-│  │  │  │  ├─ui.php                          界面视图文件
+│  │  │  │  ├─ui.php                          界面模板文件
 ├─runtime                                     运行时目录（可在入口文件中定义APP_RUNTIME常量自定义）
 │  ├─cache                                    File缓存目录
 │  ├─tpl                                      编译模板缓存目录

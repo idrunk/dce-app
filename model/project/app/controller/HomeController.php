@@ -6,16 +6,13 @@
 
 namespace app\controller;
 
+use dce\project\Controller;
 use service\SignService;
 use dce\project\node\Node;
-use dce\project\request\Request;
-use dce\project\view\ViewCli;
 
-class HomeController extends ViewCli {
-    #[Node('app', omissiblePath: true)]
-    public function __construct(Request $request) {
-        parent::__construct($request);
-    }
+class HomeController extends Controller {
+    #[Node('app', 'cli', omissiblePath: true)]
+    public function __init(): void {}
 
     #[Node('sign_in')]
     public function signIn() {

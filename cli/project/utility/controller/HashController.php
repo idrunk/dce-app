@@ -1,15 +1,12 @@
 <?php
 namespace utility\controller;
 
+use dce\project\Controller;
 use dce\project\node\Node;
-use dce\project\request\Request;
-use dce\project\view\ViewCli;
 
-class HashController extends ViewCli {
-    #[Node('utility', omissiblePath: true)]
-    public function __construct(Request $request) {
-        parent::__construct($request);
-    }
+class HashController extends Controller {
+    #[Node('utility', 'cli', omissiblePath: true)]
+    public function __init(): void {}
 
     #[Node('hash', lazyMatch: true)]
     public function run() {
