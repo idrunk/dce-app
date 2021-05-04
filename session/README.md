@@ -48,13 +48,13 @@ ubuntu run podman pod create -n wssm -p 20460-20462:20460-20462 -p 20463:20463/u
 
 2. 启动服务器1
 ```shell
-ubuntu run podman run --rm --name server --pod wssm -it -v /mnt/d/Seafile/Drunk-App/dce/backend/dce-app:/app idrunk/swoole /app/session-manager/dce websocket start
+ubuntu run podman run --rm --name server --pod wssm -it -v /mnt/d/Seafile/Drunk-App/dce/backend/dce-app:/app idrunk/swoole /app/session/dce websocket start
 ```
 
 3. 启动服务器2
 ```shell
 # 服务器2挂载了与服务器1相同的环境目录, 所以默认端口配置也一样, 这时可以通过命令行指定端口, 避免与服务器1冲突
-ubuntu run podman run --rm --name server2 --pod wssm -it -v /mnt/d/Seafile/Drunk-App/dce/backend/dce-app:/app idrunk/swoole /app/session-manager/dce websocket start -port 20460 -api_port 20700 -api_password VjL86kK58Fu3RpRdzuq0YcmN6eXLGPp9
+ubuntu run podman run --rm --name server2 --pod wssm -it -v /mnt/d/Seafile/Drunk-App/dce/backend/dce-app:/app idrunk/swoole /app/session/dce websocket start -port 20460 -api_port 20700 -api_password VjL86kK58Fu3RpRdzuq0YcmN6eXLGPp9
 ```
 
 ### 访问IM

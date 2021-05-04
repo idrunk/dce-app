@@ -2,7 +2,7 @@
 return [
     'mysql' => [
         'default' => [ // 单分库模式配置
-            'host' => '192.168.1.222',
+            'host' => '192.168.31.222',
             'db_user' => 'root',
             'db_password' => 'drunk',
             'db_name' => 'sample_db1',
@@ -10,7 +10,7 @@ return [
         ],
         'db2' => [ // 主从复制库模式配置, (各种模式配置互相兼容, Dce最终会处理成相同格式)
             [
-                'host' => '192.168.1.222',
+                'host' => '192.168.31.222',
                 'db_user' => 'root',
                 'db_password' => 'drunk',
                 'db_name' => 'sample_db2',

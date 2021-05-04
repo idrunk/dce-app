@@ -7,7 +7,7 @@
 namespace sample\service;
 
 use dce\project\ProjectManager;
-use dce\project\request\SessionManager;
+use dce\project\session\SessionManager;
 use Swoole\Table;
 use websocket\service\WebsocketServer;
 

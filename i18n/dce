@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+define('APP_PROJECT_ROOT', __DIR__ . '/project');
+require_once __DIR__ . '/../vendor/autoload.php';
+dce\Dce::boot();

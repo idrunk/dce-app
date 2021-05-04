@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+define('APP_PROJECT_ROOT', __DIR__ . '/app');
+require_once __DIR__ . '/../vendor/autoload.php';
+dce\Dce::scan();
+
+#[\dce\loader\ClassDecorator]
+class TestClass {
+    public static \dce\i18n\Language|string $langText1 = '测试文本';
+}
+
+\dce\loader\ClassDecoratorManager::decorate(TestClass::class);
+
+testPoint(
+    (string) TestClass::$langText1,
+    class_exists('\app\controller\DefaultController'),
+);

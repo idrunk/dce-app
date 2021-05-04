@@ -4,7 +4,7 @@ namespace project\service;
 use dce\cache\engine\FileCache;
 use dce\Dce;
 use dce\project\request\Request;
-use dce\project\request\SessionManager;
+use dce\project\session\SessionManager;
 use drunk\Structure;
 use websocket\service\WebsocketServer;
 
