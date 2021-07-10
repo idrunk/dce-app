@@ -22,7 +22,7 @@ return [
     [
         'path' => 'im/login',
         'name' => '登录',
-        'controller' => 'ImServiceController->signIn',
+        'controller' => 'ImServiceController->login',
     ], [
         'path' => 'im/send',
         'name' => '发送消息',
@@ -30,6 +30,6 @@ return [
     ], [
         'path' => 'im/logout',
         'name' => '退出登录',
-        'controller' => 'ImServiceController->signOut',
+        'controller' => 'ImServiceController->logout',
     ]
 ];

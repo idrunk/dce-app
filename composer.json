@@ -13,6 +13,6 @@
     ],
     "require": {
         "php": ">=8.0",
-        "idrunk/dce": "^4.2-dev"
+        "idrunk/dce": "@dev"
     }
 }

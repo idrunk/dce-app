@@ -41,6 +41,6 @@ class ImWebsocketServer extends WebsocketServer {
     protected function eventOnClose($server, int $fd, int $reactorId): void {
         $imService = new ImWebsocketService($this, $fd);
         // 断开连接时退出登录 (如果你不需要断开即主动退出则无需此处理)
-        $imService->signOut();
+        $imService->logout();
     }
 }

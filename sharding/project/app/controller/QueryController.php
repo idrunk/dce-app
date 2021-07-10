@@ -38,8 +38,8 @@ class QueryController extends Controller {
                 'mobile' => sprintf('1%s', rand(3000000000, 9999999999)),
                 'nickname' => ['football', 'obligation', 'problem', 'data', 'anxiety', 'sir'][rand(0, 5)],
                 'gender' => rand(0, 2),
-                'sign_up_ip' => $this->rawRequest->getClientInfo()['ip'] ?? '',
-                'sign_up_time' => date('Y-m-d H:i:s'),
+                'register_ip' => $this->rawRequest->getClientInfo()['ip'] ?? '',
+                'register_time' => date('Y-m-d H:i:s'),
             ]);
 
             for ($j = rand(0, 3); $j --;) {
@@ -53,11 +53,11 @@ class QueryController extends Controller {
             }
 
             for ($j = rand(0, 4); $j --;) {
-                db('member_sign_in')->insert([
+                db('member_login')->insert([
                     'mid' => $mid,
                     'type' => rand(0, 5),
-                    'sign_in_date' => date('Y-m-d', rand(1400000000, 1700000000)),
-                    'last_sign_in_date' => date('Y-m-d', rand(1400000000, 1700000000)),
+                    'login_date' => date('Y-m-d', rand(1400000000, 1700000000)),
+                    'last_login_date' => date('Y-m-d', rand(1400000000, 1700000000)),
                     'create_time' => date('Y-m-d H:i:s'),
                 ]);
             }
@@ -74,7 +74,7 @@ class QueryController extends Controller {
             $this->print($member);
             $this->print(db('member_badge', 'mb')->join('member_badge_map', 'mbm', 'mbm.mb_id = mb.id')
                 ->where('mbm.mid', $member['mid'])->select('mb.*'));
-            $this->print(db('member_sign_in')->where('mid', $member['mid'])->find(), "\n\n");
+            $this->print(db('member_login')->where('mid', $member['mid'])->find(), "\n\n");
         }
 
         $this->print("\n用户详情:\n\n");
@@ -83,7 +83,7 @@ class QueryController extends Controller {
         $this->print($member);
         $this->print(db('member_badge', 'mb')->join('member_badge_map', 'mbm', 'mbm.mb_id = mb.id')
             ->where('mbm.mid', $member['mid'])->select('mb.*'));
-        $this->print(db('member_sign_in')->where('mid', $member['mid'])->find());
+        $this->print(db('member_login')->where('mid', $member['mid'])->find());
     }
 
     #[Node]
@@ -98,8 +98,8 @@ class QueryController extends Controller {
             'mobile' => sprintf('1%s', rand(3000000000, 9999999999)),
             'nickname' => ['football', 'obligation', 'problem', 'data', 'anxiety', 'sir'][rand(0, 5)],
             'gender' => rand(0, 2),
-            'sign_up_ip' => $this->rawRequest->getClientInfo()['ip'] ?? '',
-            'sign_up_time' => date('Y-m-d H:i:s'),
+            'register_ip' => $this->rawRequest->getClientInfo()['ip'] ?? '',
+            'register_time' => date('Y-m-d H:i:s'),
         ]);
         $this->printf("更新后:\n\n%s\n\n", db('member')->where('mid', $randMember['mid'])->find());
     }

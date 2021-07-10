@@ -9,7 +9,7 @@ namespace app\controller;
 use app\model\Member;
 use app\model\MemberBadge;
 use app\model\MemberBadgeMap;
-use app\model\MemberSignIn;
+use app\model\MemberLogin;
 use dce\project\Controller;
 use dce\project\node\Node;
 
@@ -39,8 +39,8 @@ class ActiveController extends Controller {
             $member->mobile = sprintf('1%s', rand(3000000000, 9999999999));
             $member->nickname = ['football', 'obligation', 'problem', 'data', 'anxiety', 'sir'][rand(0, 5)];
             $member->gender = rand(0, 2);
-            $member->signUpIp = $this->rawRequest->getClientInfo()['ip'] ?? '';
-            $member->signUpTime = date('Y-m-d H:i:s');
+            $member->registerIp = $this->rawRequest->getClientInfo()['ip'] ?? '';
+            $member->registerTime = date('Y-m-d H:i:s');
             $member->save();
 
             for ($j = rand(0, 3); $j --;) {
@@ -54,13 +54,13 @@ class ActiveController extends Controller {
             }
 
             for ($j = rand(0, 4); $j --;) {
-                $memberSignIn = new MemberSignIn();
-                $memberSignIn->mid = $member->mid;
-                $memberSignIn->type = rand(0, 5);
-                $memberSignIn->signInDate = date('Y-m-d', rand(1400000000, 1700000000));
-                $memberSignIn->lastSignInDate = date('Y-m-d', rand(1400000000, 1700000000));
-                $memberSignIn->createTime = date('Y-m-d H:i:s');
-                $memberSignIn->save();
+                $memberLogin = new MemberLogin();
+                $memberLogin->mid = $member->mid;
+                $memberLogin->type = rand(0, 5);
+                $memberLogin->loginDate = date('Y-m-d', rand(1400000000, 1700000000));
+                $memberLogin->lastLoginDate = date('Y-m-d', rand(1400000000, 1700000000));
+                $memberLogin->createTime = date('Y-m-d H:i:s');
+                $memberLogin->save();
             }
         }
 
@@ -70,11 +70,11 @@ class ActiveController extends Controller {
     #[Node]
     public function select() {
         $this->print("用户列表:\n\n");
-        $allMembers = Member::query()->with('badge', 'sign_in')->order('mid')->limit(10)->select();
+        $allMembers = Member::query()->with('badge', 'login')->order('mid')->limit(10)->select();
         foreach ($allMembers as $member) {
             $this->print($member->extractProperties());
             $this->print($member->badge ?? null);
-            $this->print($member->signIn ?? null, "\n\n");
+            $this->print($member->login ?? null, "\n\n");
         }
 
         $this->print("\n用户详情:\n\n");
@@ -82,7 +82,7 @@ class ActiveController extends Controller {
         $member = Member::find($randMid);
         $this->print($member->extractProperties());
         $this->print($member->badge);
-        $this->print($member->signIn ? $member->signIn->extractProperties() : null);
+        $this->print($member->login ? $member->login->extractProperties() : null);
     }
 
     #[Node]
@@ -96,8 +96,8 @@ class ActiveController extends Controller {
         $randMember->mobile = sprintf('1%s', rand(3000000000, 9999999999));
         $randMember->nickname = ['football', 'obligation', 'problem', 'data', 'anxiety', 'sir'][rand(0, 5)];
         $randMember->gender = rand(0, 2);
-        $randMember->signUpIp = $this->rawRequest->getClientInfo()['ip'] ?? '';
-        $randMember->signUpTime = date('Y-m-d H:i:s');
+        $randMember->registerIp = $this->rawRequest->getClientInfo()['ip'] ?? '';
+        $randMember->registerTime = date('Y-m-d H:i:s');
         $randMember->save();
         $this->printf("更新后:\n\n%s\n\n", $randMember->extractProperties());
     }

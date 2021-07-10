@@ -156,7 +156,7 @@
 <body>
 <div id="app">
 
-    <template v-if="showingSignIn">
+    <template v-if="showingLogin">
         <div class="login-alert">
             <dl>
                 <dd>
@@ -166,8 +166,8 @@
                     <textarea placeholder="简介" v-model="registrar.brief"></textarea>
                 </dd>
                 <dd>
-                    <input type="button" value="登录" @click="signIn">
-                    <input type="button" value="取消" @click="showingSignIn = false">
+                    <input type="button" value="登录" @click="login">
+                    <input type="button" value="取消" @click="showingLogin = false">
                 </dd>
             </dl>
         </div>
@@ -176,8 +176,8 @@
     <template v-else>
         <div class="head">
             <h2>{{title}}</h2>
-            <input v-if="signedIn" type="button" value="退出登录" @click="signOut">
-            <input v-else type="button" value="登录" @click="showSignIn">
+            <input v-if="signedIn" type="button" value="退出登录" @click="logout">
+            <input v-else type="button" value="登录" @click="showLogin">
         </div>
         <div class="body">
             <div class="chat-body">
@@ -196,7 +196,7 @@
                 </div>
                 <div class="chat-form">
                     <div class="chat-input">
-                        <textarea placeholder="输入聊天内容" v-model="message" @focus="signInValid('您尚未登录, 无法发送消息, 请先登录')"></textarea>
+                        <textarea placeholder="输入聊天内容" v-model="message" @focus="loginValid('您尚未登录, 无法发送消息, 请先登录')"></textarea>
                     </div>
                     <div class="chat-control">
                         <input type="button" value="发送" @click="sendMessage">
@@ -212,7 +212,7 @@
                         <ul>
                             <li v-for="(user, key) of userList" :key="user.mid" @click="selectUser(user)" :title="user.brief">
                                 {{user.nickname}}
-                                <span v-if="user.signInPlaces > 1" :title="'在 ' +user.signInPlaces+ ' 地登录'">({{user.signInPlaces}})</span>
+                                <span v-if="user.loginPlaces > 1" :title="'在 ' +user.loginPlaces+ ' 地登录'">({{user.loginPlaces}})</span>
                             </li>
                         </ul>
                     </div>
@@ -264,7 +264,7 @@
                         brief: '',
                     },
                     talkTarget: 0,
-                    showingSignIn: 0,
+                    showingLogin: 0,
                     signedIn: false,
                 };
                 _(initData).each((value, key) => {
@@ -299,9 +299,9 @@
             /**
              * 登录
              */
-            signIn() {
+            login() {
                 if (this.registrar.nickname && this.registrar.brief) {
-                    this.send(api.signIn, this.registrar);
+                    this.send(api.login, this.registrar);
                 } else {
                     alert('昵称或简介不能为空');
                 }
@@ -331,14 +331,14 @@
             /**
              * 弹出登录
              */
-            showSignIn() {
-                this.showingSignIn = true;
+            showLogin() {
+                this.showingLogin = true;
             },
             /**
              * 退出
              */
-            signOut() {
-                this.send(api.signOut);
+            logout() {
+                this.send(api.logout);
                 this.init();
                 this.loadMessage(0);
             },
@@ -361,7 +361,7 @@
              * @returns {string}
              */
             pack(path, data) {
-                return path + '\n' + JSON.stringify(data);
+                return path + ';' + JSON.stringify(data);
             },
             /**
              * Websocket消息解包
@@ -369,7 +369,7 @@
              * @returns {{path: string, data: *}}
              */
             unpack(data) {
-                let semicolonIndex = data.indexOf('\n');
+                let semicolonIndex = data.indexOf(';');
                 if (-1 === semicolonIndex) {
                     semicolonIndex = data.length;
                 }
@@ -382,7 +382,7 @@
              * @param user
              */
             selectUser(user) {
-                if (! this.signInValid('您尚未登录, 无法发起对聊, 请先登录')) {
+                if (! this.loginValid('您尚未登录, 无法发起对聊, 请先登录')) {
                     return false;
                 }
                 if (user.mid === this.talkTarget) {
@@ -396,10 +396,10 @@
                 this.loadMessage(this.talkTarget);
             },
 
-            signInValid(tip) {
+            loginValid(tip) {
                 if (! this.signedIn) {
                     alert(tip);
-                    this.showSignIn();
+                    this.showLogin();
                     return false;
                 }
                 return true;
@@ -441,7 +441,7 @@
                      * 更新在线列表
                      * @param userList
                      */
-                    [api.signIn] (userList) {
+                    [api.login] (userList) {
                         // 直接刷新整个列表
                         that.userList = userList;
                     },
@@ -454,7 +454,7 @@
                         if (signer) {
                             // 直接刷新整个列表
                             that.signer = signer;
-                            that.showingSignIn = false;
+                            that.showingLogin = false;
                         }
                     },
                 };
@@ -464,11 +464,11 @@
     });
 
     const api = {
-        signIn: 'project/im/sign_in',
+        login: 'project/im/login',
         loadSigner: 'project/im/signer',
         sendMessage: 'project/im/send',
         loadMessage: 'project/im/load',
-        signOut: 'project/im/sign_out',
+        logout: 'project/im/logout',
     };
 </script>
 

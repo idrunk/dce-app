@@ -20,7 +20,7 @@ class ImEngine {
         $this->cache = Dce::$cache->file;
     }
 
-    public function signIn(string $nickname, string $brief): array {
+    public function login(string $nickname, string $brief): array {
         $nickname = mb_substr($nickname, 0, 16);
         $brief = mb_substr($brief, 0, 128);
         $memberList = $this->cache->get('members') ?: [];
@@ -29,7 +29,7 @@ class ImEngine {
         $this->cache->set('members', $memberList);
 
         // SessionManager标记登录
-        SessionManager::inst()->fdSignIn($mid, $this->request->fd, $this->server->apiHost, $this->server->apiPort);
+        SessionManager::inst()->fdLogin($mid, $this->request->fd, $this->server->apiHost, $this->server->apiPort);
         // 设置/更新当前登录者的全部Session存的用户信息
         SessionManager::inst()->setSession($mid, 'signer', $memberInfo);
         // 登录后刷新登录用户列表
@@ -37,11 +37,11 @@ class ImEngine {
         return $memberInfo;
     }
 
-    public function signOut(): void {
+    public function logout(): void {
         // 删除当前Session里的登录用户信息
         $this->request->session->delete('signer');
         // SessionManager标记当前sid的用户已退出登录
-        SessionManager::inst()->signOut($this->request->session->getId());
+        SessionManager::inst()->logout($this->request->session->getId());
         // 退出时刷新登录用户列表
         $this->refreshOnlineMember();
     }
@@ -51,7 +51,7 @@ class ImEngine {
         $fdFormList = SessionManager::inst()->listFdForm(limit: null);
         foreach ($fdFormList as $fdid => $fdForm) {
             // 向全部在线用户(不一定已登录)推送在线登录用户列表
-            SessionManager::inst()->sendMessageFd($fdid, $signerList, 'project/im/sign_in');
+            SessionManager::inst()->sendMessageFd($fdid, $signerList, 'project/im/login');
         }
     }
 
@@ -77,9 +77,9 @@ class ImEngine {
             }
             if (key_exists($mid, $memberList)) {
                 if (key_exists($mid, $signerList)) {
-                    $signerList[$mid]['signInPlaces'] ++;
+                    $signerList[$mid]['loginPlaces'] ++;
                 } else {
-                    $signerList[$mid] = $memberList[$mid] + ['signInPlaces' => 1];
+                    $signerList[$mid] = $memberList[$mid] + ['loginPlaces' => 1];
                 }
             }
         }

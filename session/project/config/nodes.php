@@ -12,12 +12,12 @@ return [
         'methods' => 'websocket',
     ],
     [
-        'path' => 'im/sign_in',
-        'controller' => 'ImController->signIn',
+        'path' => 'im/login',
+        'controller' => 'ImController->login',
     ],
     [
-        'path' => 'im/sign_out',
-        'controller' => 'ImController->signOut',
+        'path' => 'im/logout',
+        'controller' => 'ImController->logout',
     ],
     [
         'path' => 'im/signer',

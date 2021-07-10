@@ -15,7 +15,7 @@ use dce\model\Validator;
 /**
  * @package tests\model
  */
-class MemberSignIn extends DbActiveRecord {
+class MemberLogin extends DbActiveRecord {
     #[ Property('ID'), DbField(FieldType::BIGINT), ]
     public int $id;
 
@@ -29,10 +29,10 @@ class MemberSignIn extends DbActiveRecord {
     public int $terminal;
 
     #[ Property('登录日期'), DbField(FieldType::DATE), Validator(Validator::RULE_DATE), Validator(Validator::RULE_REQUIRED), ]
-    public string $signInDate;
+    public string $loginDate;
 
     #[ Property('上次登录日期'), DbField(FieldType::DATE), Validator(Validator::RULE_DATE), ]
-    public string $lastSignInDate;
+    public string $lastLoginDate;
 
     #[ Property('添加时间'), DbField(FieldType::DATETIME), Validator(Validator::RULE_DATETIME), ]
     public string $createTime;

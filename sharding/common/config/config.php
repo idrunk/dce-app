@@ -10,5 +10,6 @@ return [
     ],
     '#extends' => [
         __DIR__ . '/sharding.php',
+        APP_ROOT . '../.ignore/config/sharding.php',
     ],
 ];

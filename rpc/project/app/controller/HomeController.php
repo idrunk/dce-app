@@ -7,7 +7,6 @@
 namespace app\controller;
 
 use app\model\TestModel;
-use dce\base\SwooleUtility;
 use dce\Dce;
 use dce\project\Controller;
 use dce\project\node\Node;

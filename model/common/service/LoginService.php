@@ -8,12 +8,12 @@ namespace service;
 
 use model\Member;
 
-class SignService {
-    public function signIn(string $nickname): Member|false {
+class LoginService {
+    public function login(string $nickname): Member|false {
         return Member::find($nickname);
     }
 
-    public function signUp(string $nickname, string $brief): bool {
+    public function register(string $nickname, string $brief): bool {
         $member = new Member();
         $member->nickname = $nickname;
         $member->brief = $brief;

@@ -63,14 +63,10 @@ class AppController extends Controller implements ClassDecorator {
 
     #[Node]
     public function model() {
-        try {
-            // 模型校验器多语种异常消息使用示例
-            $model = new TestModel();
-            $model->id = 9; // id属性必须为 10-100，当前值异常会在valid的时候抛出异常
-            $model->id2 = 101; // id必须小于100，同样异常，你可以注释掉上行而抛出本异常
-            $model->valid();
-        } catch (Throwable $throwable) {
-            $this->exception($throwable);
-        }
+        // 模型校验器多语种异常消息使用示例
+        $model = new TestModel();
+        $model->id = 9; // id属性必须为 10-100，当前值异常会在valid的时候抛出异常
+        $model->id2 = 101; // id必须小于100，同样异常，你可以注释掉上行而抛出本异常
+        $model->valid();
     }
 }

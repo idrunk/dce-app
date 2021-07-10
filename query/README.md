@@ -29,7 +29,7 @@
 │  │  │  ├─Member.php                         Member实体类
 │  │  │  ├─MemberBadge.php                    MemberBadge实体类
 │  │  │  ├─MemberBadgeMap.php
-│  │  │  ├─MemberSignIn.php
+│  │  │  ├─MemberLogin.php
 ├─dce                                         Shell/PHP脚本版Dce工具
 ├─dce.bat                                     Windows命令行版Dce工具
 ├─README.md                                   说明文件
@@ -47,24 +47,24 @@
 
 ```shell
 # 插入
-./query/dce active insert
+./dce active insert
 # 查询
-./query/dce active select
+./dce active select
 # 更新
-./query/dce active update
+./dce active update
 # 删除
-./query/dce active delete
+./dce active delete
 ```
 
 ### 查询器式数据库操作
 
 ```shell
 # 插入
-./query/dce query insert
+./dce query insert
 # 查询
-./query/dce query select
+./dce query select
 # 更新
-./query/dce query update
+./dce query update
 # 删除
-./query/dce query delete
+./dce query delete
 ```

@@ -7,22 +7,22 @@
 namespace app\controller;
 
 use dce\project\Controller;
-use service\SignService;
+use service\LoginService;
 use dce\project\node\Node;
 
 class HomeController extends Controller {
     #[Node('app', 'cli', omissiblePath: true)]
     public function __init(): void {}
 
-    #[Node('sign_in')]
-    public function signIn() {
-        $service = new SignService();
+    #[Node('login')]
+    public function login() {
+        $service = new LoginService();
         $nickname = $this->input('请输入昵称: ');
-        $member = $service->signIn($nickname);
+        $member = $service->login($nickname);
         if (! $member) {
             $brief = $this->input('用户不存在, 请输入简介完成注册: ');
-            $service->signUp($nickname, $brief);
-            $member = $service->signIn($nickname);
+            $service->register($nickname, $brief);
+            $member = $service->login($nickname);
         }
         if ($member) {
             $this->print('登录成功!');

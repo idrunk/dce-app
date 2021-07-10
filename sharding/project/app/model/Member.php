@@ -17,7 +17,7 @@ use dce\model\Validator;
  * Class Member
  * @package tests\model
  * @property MemberBadge[] $badge
- * @property MemberSignIn $signIn
+ * @property MemberLogin $login
  */
 class Member extends DbActiveRecord {
     public const SCENARIO_REGISTER = 'register';
@@ -53,10 +53,10 @@ class Member extends DbActiveRecord {
     public int $gender;
 
     #[ Property('注册IP'), DbField(FieldType::VARCHAR, 15, ''), Validator(Validator::RULE_IP), ]
-    public string $signUpIp;
+    public string $registerIp;
 
     #[ Property('注册时间'), DbField(FieldType::DATETIME, default: '1900-01-01'), Validator(Validator::RULE_DATETIME), ]
-    public string $signUpTime;
+    public string $registerTime;
 
     public function getBadgeMap(): ActiveRelation {
         return $this->hasMany(MemberBadgeMap::class, ['mid' => 'mid']);
@@ -66,8 +66,8 @@ class Member extends DbActiveRecord {
         return $this->hasMany(MemberBadge::class, ['id' => 'mb_id'], 'badgeMap');
     }
 
-    public function getSignIn(): ActiveRelation {
-        $relation = $this->hasOne(MemberSignIn::class, ['mid' => 'mid']);
+    public function getLogin(): ActiveRelation {
+        $relation = $this->hasOne(MemberLogin::class, ['mid' => 'mid']);
         $relation->getActiveQuery()->limit(1);
         return $relation;
     }

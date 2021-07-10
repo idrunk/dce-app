@@ -30,7 +30,7 @@
 │  │  │  ├─Member.php                         Member实体类
 │  │  │  ├─MemberBadge.php                    MemberBadge实体类
 │  │  │  ├─MemberBadgeMap.php
-│  │  │  ├─MemberSignIn.php
+│  │  │  ├─MemberLogin.php
 ├─dce                                         Shell/PHP脚本版Dce工具
 ├─README.md                                   说明文件
 ```
@@ -49,26 +49,26 @@
 
 ```shell
 # 插入
-./sharding/dce active insert
+./dce active insert
 # 查询
-./sharding/dce active select
+./dce active select
 # 更新
-./sharding/dce active update
+./dce active update
 # 删除
-./sharding/dce active delete
+./dce active delete
 ```
 
 ### 查询器式数据库操作
 
 ```shell
 # 插入
-./sharding/dce query insert
+./dce query insert
 # 查询
-./sharding/dce query select
+./dce query select
 # 更新
-./sharding/dce query update
+./dce query update
 # 删除
-./sharding/dce query delete
+./dce query delete
 ```
 
 如果你仔细比对通过查询器与活动记录方式调用select接口的结果，你会发现两种查询输出的sql记录有一些区别：

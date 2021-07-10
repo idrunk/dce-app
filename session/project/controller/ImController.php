@@ -11,20 +11,20 @@ class ImController extends Controller {
         $this->imEngine = new ImEngine($this->request);
     }
 
-    public function signIn() {
-        $signer = $this->imEngine->signIn($this->request->request['nickname'], $this->request->request['brief']);
+    public function login() {
+        $signer = $this->imEngine->login($this->request->request['nickname'], $this->request->request['brief']);
         $this->response($signer, 'project/im/signer');
     }
 
-    public function signOut() {
-        $this->imEngine->signOut();
+    public function logout() {
+        $this->imEngine->logout();
     }
 
     public function loadSigner() {
         [$signer, $signerList] = $this->imEngine->loadSigner();
         $this->response($signer ?: null);
         if ($signerList) {
-            $this->response($signerList, 'project/im/sign_in');
+            $this->response($signerList, 'project/im/login');
         }
     }
 

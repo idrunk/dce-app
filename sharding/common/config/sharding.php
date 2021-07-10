@@ -9,14 +9,12 @@ return [
             'db_port' => 3306,
         ],
         'db2' => [ // 主从复制库模式配置, (各种模式配置互相兼容, Dce最终会处理成相同格式)
-            [
-                'host' => '192.168.31.222',
-                'db_user' => 'root',
-                'db_password' => 'drunk',
-                'db_name' => 'sample_db2',
-                'db_port' => 3306,
-                'is_master' => 1,
-            ],
+            'host' => '192.168.31.222',
+            'db_user' => 'root',
+            'db_password' => 'drunk',
+            'db_name' => 'sample_db2',
+            'db_port' => 3306,
+            'is_master' => 1,
         ],
     ],
     'sharding' => [
@@ -28,13 +26,17 @@ return [
             'table' => [
                 'member' => [
                     'id_column' => 'mid',
+                    'id_tag' => 'mid',
                 ],
                 'member_badge_map' => [
                     'sharding_column' => 'mid',
+                    'sharding_tag' => 'mid',
                 ],
-                'member_sign_in' => [
-                    'id_column' => ['name' => 'id', 'tag' => 'msi_id'],
+                'member_login' => [
+                    'id_column' => 'id',
+                    'id_tag' => 'ml_id',
                     'sharding_column' => 'mid',
+                    'sharding_tag' => 'mid',
                 ],
             ],
             'mapping' => [

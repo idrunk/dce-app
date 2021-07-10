@@ -16,14 +16,14 @@ class ImServiceController extends Controller {
         $this->imService = new ImWebsocketService($this->rawRequest->getServer(), $this->request->fd);
     }
 
-    public function signIn() {
+    public function login() {
         $nickname = $this->request->request['nickname'];
         $brief = $this->request->request['brief'];
-        $this->imService->signIn($nickname, $brief);
+        $this->imService->login($nickname, $brief);
     }
 
-    public function signOut() {
-        $this->imService->signOut();
+    public function logout() {
+        $this->imService->logout();
     }
 
     public function send() {

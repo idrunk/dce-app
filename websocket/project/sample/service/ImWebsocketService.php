@@ -30,16 +30,16 @@ class ImWebsocketService {
      * @param string $nickname
      * @param string $brief
      */
-    public function signIn(string $nickname, string $brief) {
-        $mid = $this->signUp($nickname, $brief);
-        SessionManager::inst()->fdSignIn($mid, $this->fd, $this->server->apiHost, $this->server->apiPort);
+    public function login(string $nickname, string $brief) {
+        $mid = $this->register($nickname, $brief);
+        SessionManager::inst()->fdLogin($mid, $this->fd, $this->server->apiHost, $this->server->apiPort);
         // 登录成功后通知所有用户刷新在线用户列表
         $this->notifyUserList();
         // 给登录用户推送历史消息列表
         $this->pushMessageList();
     }
 
-    public function signUp(string $nickname, string $brief) : int {
+    public function register(string $nickname, string $brief) : int {
         foreach ($this->getMemberTable() as $log) {
             // 如果有同名用户了, 则视为已登录, 直接返回其ID
             if ($log['nickname'] === $nickname) {
@@ -133,11 +133,11 @@ class ImWebsocketService {
     /**
      * 退出
      */
-    public function signOut() {
+    public function logout() {
         $sid = SessionManager::inst()->getFdForm($this->fd, $this->server->apiHost, $this->server->apiPort)['sid'] ?? 0;
         // 在close事件里面调用了此方法, 因为不是所有的close都是正常websocket连接, 所以不会有FdForm, 也就不会有sid, 所以这种情况不该进入退出逻辑
         if ($sid) {
-            SessionManager::inst()->signOut($sid);
+            SessionManager::inst()->logout($sid);
             // 退出后通知所有用户刷新在线用户列表
             $this->notifyUserList();
         }

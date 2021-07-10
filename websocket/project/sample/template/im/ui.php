@@ -336,7 +336,7 @@ new Vue({
          * @returns {string}
          */
         pack(path, data) {
-            return path + '\n' + JSON.stringify(data);
+            return path + ';' + JSON.stringify(data);
         },
         /**
          * Websocket消息解包
@@ -344,7 +344,7 @@ new Vue({
          * @returns {{path: string, data: *}}
          */
         unpack(data) {
-            let semicolonIndex = data.indexOf('\n');
+            let semicolonIndex = data.indexOf(';');
             if (-1 === semicolonIndex) {
                 semicolonIndex = data.length;
             }

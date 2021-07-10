@@ -1,1 +1,0 @@
-O:41:"dce\sharding\id_generator\bridge\IdgBatch":8:{s:4:"type";s:9:"increment";s:14:"serverBitWidth";i:8;s:14:"moduloBitWidth";i:0;s:13:"batchBitWidth";i:0;s:10:"batchCount";i:65536;s:8:"serverId";i:0;s:9:"batchFrom";i:262145;s:7:"batchTo";i:327680;}

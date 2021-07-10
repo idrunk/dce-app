@@ -27,28 +27,28 @@
 
 ### 在Shell中使用
 ```shell
-./cli/dce hash DCE
+./dce hash DCE
 ```
 
 ### 作为PHP脚本使用
 ```shell
-php ./cli/dce hash DCE
+php ./dce hash DCE
 ```
 
 ### 在Windows命令行使用
 ```shell
-.\cli\dce.bat hash DCE
+.\dce.bat hash DCE
 ```
 
 ### 传入参数
 ```shell
-./cli/dce hash -c DCE
+./dce hash -c DCE
 # 或
-./cli/dce hash -c=DCE
+./dce hash -c=DCE
 ```
 
 ### 交互模式
 
 ```shell
-./cli/dce hash -i
+./dce hash -i
 ```
