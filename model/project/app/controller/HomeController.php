@@ -26,7 +26,7 @@ class HomeController extends Controller {
         }
         if ($member) {
             $this->print('登录成功!');
-            $this->print('你的用户信息: ', json_encode($member->extractProperties(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+            $this->print('你的用户信息: ', json_encode($member->extract(), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         } else {
             $this->print('登录失败!');
         }

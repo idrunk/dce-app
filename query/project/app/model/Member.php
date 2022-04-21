@@ -9,7 +9,7 @@ namespace app\model;
 use dce\db\active\ActiveRelation;
 use dce\db\active\DbActiveRecord;
 use dce\db\entity\DbField;
-use dce\db\entity\schema\FieldType;
+use dce\db\entity\FieldType;
 use dce\model\Property;
 use dce\model\Validator;
 
@@ -22,40 +22,40 @@ use dce\model\Validator;
 class Member extends DbActiveRecord {
     public const SCENARIO_REGISTER = 'register';
 
-    #[ Property, DbField(FieldType::BIGINT, primary: true), ]
+    #[ Property, DbField(FieldType::Bigint, primary: true), ]
     public int $mid;
 
-    #[ Property('用户名'), DbField(FieldType::VARCHAR, 16),
+    #[ Property('用户名'), DbField(FieldType::Varchar, 16),
         Validator(Validator::RULE_STRING, [self::SCENARIO_DEFAULT, self::SCENARIO_REGISTER], 16, 3),
         Validator(Validator::RULE_REQUIRED, [self::SCENARIO_REGISTER]),
     ]
     public string $username;
 
-    #[ Property('密码'), DbField(FieldType::VARCHAR, 128), ]
+    #[ Property('密码'), DbField(FieldType::Varchar, 128), ]
     public string $password;
 
-    #[ Property('手机'), DbField(FieldType::VARCHAR, 11),
+    #[ Property('手机'), DbField(FieldType::Varchar, 11),
         Validator(Validator::RULE_REGULAR, [self::SCENARIO_DEFAULT, self::SCENARIO_REGISTER], regexp: '/^1[3-9]\d{9}$/'),
         Validator(Validator::RULE_REQUIRED, [self::SCENARIO_REGISTER]),
     ]
     public string $mobile;
 
-    #[ Property('昵称'), DbField(FieldType::VARCHAR, 16, ''), Validator(Validator::RULE_STRING, max: 16, min: 2), ]
+    #[ Property('昵称'), DbField(FieldType::Varchar, 16, ''), Validator(Validator::RULE_STRING, max: 16, min: 2), ]
     public string $nickname;
 
-    #[ Property('头像'), DbField(FieldType::VARCHAR, 128, ''), Validator(Validator::RULE_STRING, max: 128), ]
+    #[ Property('头像'), DbField(FieldType::Varchar, 128, ''), Validator(Validator::RULE_STRING, max: 128), ]
     public string $avatar;
 
-    #[ Property('姓名'), DbField(FieldType::VARCHAR, 16, ''), Validator(Validator::RULE_STRING, max: 16), ]
+    #[ Property('姓名'), DbField(FieldType::Varchar, 16, ''), Validator(Validator::RULE_STRING, max: 16), ]
     public string $name;
 
-    #[ Property('性别'), DbField(FieldType::TINYINT, default: 0), Validator(Validator::RULE_SET, set: [0, 1, 2]), ]
+    #[ Property('性别'), DbField(FieldType::Tinyint, default: 0), Validator(Validator::RULE_SET, set: [0, 1, 2]), ]
     public int $gender;
 
-    #[ Property('注册IP'), DbField(FieldType::VARCHAR, 15, ''), Validator(Validator::RULE_IP), ]
+    #[ Property('注册IP'), DbField(FieldType::Varchar, 15, ''), Validator(Validator::RULE_IP), ]
     public string $registerIp;
 
-    #[ Property('注册时间'), DbField(FieldType::DATETIME, default: '1900-01-01'), Validator(Validator::RULE_DATETIME), ]
+    #[ Property('注册时间'), DbField(FieldType::Datetime, default: '1900-01-01'), Validator(Validator::RULE_DATETIME), ]
     public string $registerTime;
 
     public function getBadgeMap(): ActiveRelation {

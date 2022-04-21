@@ -8,16 +8,15 @@ namespace project\controller;
 
 use dce\i18n\Language;
 use dce\i18n\Locale;
-use dce\loader\ClassDecorator;
-use dce\loader\StaticInstance;
+use dce\loader\Decorator;
+use dce\loader\attr\Constructor;
 use dce\project\Controller;
 use dce\project\node\Node;
 use model\TestModel;
 use service\LangException;
-use Throwable;
 
 // 实现 ClassDecorator 接口以支持类静态属性自动实例化
-class AppController extends Controller implements ClassDecorator {
+class AppController extends Controller implements Decorator {
     #[Node('project', 'cli', omissiblePath: true)]
     public function __init(): void {}
 
@@ -44,7 +43,7 @@ class AppController extends Controller implements ClassDecorator {
     private static Language|array $langWelcome = ['欢迎使用Dce', 'Welcome to Dce'];
 
     // 使用静态属性类注解的形式自动实例化一个静态属性，通过注解参数传参
-    #[StaticInstance('欢迎欢迎')]
+    #[Constructor('欢迎欢迎')]
     private static Language $langWelcome2;
 
     #[Node]

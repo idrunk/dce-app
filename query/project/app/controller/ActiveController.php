@@ -82,16 +82,16 @@ class ActiveController extends Controller {
 
         $this->print("\n用户详情:\n\n");
         $member = Member::find($randMid);
-        $this->print($member->extractProperties());
+        $this->print($member->extract());
         $this->print($member->badge);
-        $this->print($member->login ? $member->login->extractProperties() : null);
+        $this->print($member->login ? $member->login->extract() : null);
     }
 
     #[Node]
     public function update() {
         $allMembers = Member::query()->select();
         $randMember = Member::find($allMembers[rand(0, count($allMembers) - 1)]->mid);
-        $this->printf("更新前:\n\n%s\n\n", $randMember->extractProperties());
+        $this->printf("更新前:\n\n%s\n\n", $randMember->extract());
 
         $randMember->username = ['apple', 'mango', 'papaya', 'banana', 'guava', 'pineapple'][rand(0, 5)];
         $randMember->password = sha1($randMember->username);
@@ -101,7 +101,7 @@ class ActiveController extends Controller {
         $randMember->registerIp = $this->rawRequest->getClientInfo()['ip'] ?? '';
         $randMember->registerTime = date('Y-m-d H:i:s');
         $randMember->save();
-        $this->printf("更新后:\n\n%s\n\n", $randMember->extractProperties());
+        $this->printf("更新后:\n\n%s\n\n", $randMember->extract());
     }
 
     #[Node]
@@ -110,7 +110,7 @@ class ActiveController extends Controller {
         $randMid = $allMembers[rand(0, count($allMembers) - 1)]->mid;
         $randMember = Member::find($randMid);
 
-        $this->printf("删除前:\n\n%s\n\n", $randMember->extractProperties());
+        $this->printf("删除前:\n\n%s\n\n", $randMember->extract());
         $randMember->delete();
         $randMember = Member::find($randMid);
         $this->printf("删除后:\n\n%s\n\n", $randMember);

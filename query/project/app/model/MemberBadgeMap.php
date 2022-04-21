@@ -8,7 +8,7 @@ namespace app\model;
 
 use dce\db\active\DbActiveRecord;
 use dce\db\entity\DbField;
-use dce\db\entity\schema\FieldType;
+use dce\db\entity\FieldType;
 use dce\model\Property;
 use dce\model\Validator;
 
@@ -16,9 +16,9 @@ use dce\model\Validator;
  * @package tests\model
  */
 class MemberBadgeMap extends DbActiveRecord {
-    #[ Property('会员ID'), DbField(FieldType::BIGINT), Validator(Validator::RULE_REQUIRED), ]
+    #[ Property('会员ID'), DbField(FieldType::Bigint), Validator(Validator::RULE_REQUIRED), ]
     public int $mid;
 
-    #[ Property('徽章ID'), DbField(FieldType::TINYINT), Validator(Validator::RULE_REQUIRED), ]
+    #[ Property('徽章ID'), DbField(FieldType::Tinyint), Validator(Validator::RULE_REQUIRED), ]
     public int $mbId;
 }

@@ -4,12 +4,12 @@ define('APP_PROJECT_ROOT', __DIR__ . '/app');
 require_once __DIR__ . '/../vendor/autoload.php';
 dce\Dce::initOnly();
 
-#[\dce\loader\ClassDecorator]
+#[\dce\loader\Decorator]
 class TestClass {
     public static \dce\i18n\Language|string $langText1 = '测试文本';
 }
 
-\dce\loader\ClassDecoratorManager::decorate(TestClass::class);
+\dce\loader\DecoratorManager::decorate(TestClass::class);
 
 testPoint(
     (string) TestClass::$langText1,

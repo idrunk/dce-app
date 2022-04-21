@@ -29,7 +29,7 @@ class ImEngine {
         $this->cache->set('members', $memberList);
 
         // SessionManager标记登录
-        SessionManager::inst()->fdLogin($mid, $this->request->fd, $this->server->apiHost, $this->server->apiPort);
+        SessionManager::inst()->login($mid, $this->request->session->getId());
         // 设置/更新当前登录者的全部Session存的用户信息
         SessionManager::inst()->setSession($mid, 'signer', $memberInfo);
         // 登录后刷新登录用户列表
